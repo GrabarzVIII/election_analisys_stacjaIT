@@ -37,8 +37,8 @@ NUM_COLUMNS = [
     'Liczba kart nieważnych',                                                                      
     'Liczba kart ważnych',                                                                          
     'Liczba głosów nieważnych',                                                                       
-    'W tym z powodu postawienia znaku „X" obok nazwiska dwóch lub większej liczby kandydatów',        
-    'W tym z powodu postawienia znaku „X" wyłącznie obok skreślonego nazwiska kandydata', 
-    'W tym z powodu niepostawienia znaku „X" obok nazwiska żadnego kandydata',            
+    'W tym z powodu postawienia znaku X obok nazwiska dwóch lub większej liczby kandydatów',        
+    'W tym z powodu postawienia znaku X wyłącznie obok skreślonego nazwiska kandydata', 
+    'W tym z powodu niepostawienia znaku X obok nazwiska żadnego kandydata',            
     'Liczba głosów ważnych oddanych łącznie na wszystkich kandydatów',    
     ]

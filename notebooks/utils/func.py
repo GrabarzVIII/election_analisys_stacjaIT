@@ -10,15 +10,15 @@ def prepare_results_data2020(filepath: str) -> pd.DataFrame:
     for c in df.columns:
         if c in NUM_COLUMNS:
             df[c].fillna(0)
-            df[c] = pd.to_numeric(df[c], errors='coerce').astype(int)
+            df[c] = pd.to_numeric(df[c], errors='coerce').astype('Int64')
         if any(candidate in c for candidate in CANDIDATES):
             df[c].fillna(0)
-            df[c] = pd.to_numeric(df[c], errors='coerce').astype(int)
+            df[c] = pd.to_numeric(df[c], errors='coerce').astype('Int64')
 
-    df.rename(
-        columns={
-            'W tym z powodu postawienia znaku „X" obok nazwiska dwóch lub większej liczby kandydatów':'x_multi',
-            'W tym z powodu niepostawienia znaku „X" obok nazwiska żadnego kandydata':'x_zero'
+    df = df.rename(
+        columns = {
+            'W tym z powodu postawienia znaku X obok nazwiska dwóch lub większej liczby kandydatów': 'x_multi',
+            'W tym z powodu niepostawienia znaku X obok nazwiska żadnego kandydata': 'x_zero',
         }
     )
     
@@ -39,7 +39,7 @@ def prepare_gus_population(filepath: str) -> pd.DataFrame:
     df = pd.read_excel(filepath, sheet_name='tabl. 21', skiprows=2).iloc[:,[0,4,5,6]]
     df.columns = ['TERYT','area','population','density']
     df = df[df['TERYT'].notna()].reset_index(drop=True)
-    
+
     df['TERYT'] = df['TERYT'].str[:6]
 
     for c in ['area','population','density']:
