@@ -1,5 +1,6 @@
 from .const import DTYPES_DICT,CANDIDATES,NUM_COLUMNS
 import pandas as pd
+import numpy as np
 
 def prepare_results_data2020(filepath: str) -> pd.DataFrame:
     
@@ -26,3 +27,10 @@ def prepare_results_data2020(filepath: str) -> pd.DataFrame:
 
 def prepare_trusttee_presence_data2020(filepath: str) -> pd.DataFrame:
     df = pd.read_excel(filepath, converters=DTYPES_DICT)
+    df = df.rename(
+        columns={
+            'Adnotacja o obecności mężów zaufania w obwodzie':'maz_zaufania_obezny'
+        }
+    )
+    df['czy_maz'] = np.where(df['maz_zaufania_obezny'] > 0, 1, 0)
+    return df
