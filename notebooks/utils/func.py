@@ -22,3 +22,7 @@ def prepare_results_data2020(filepath: str) -> pd.DataFrame:
     )
     
     return df
+
+
+def prepare_trusttee_presence_data2020(filepath: str) -> pd.DataFrame:
+    df = pd.read_excel(filepath, converters=DTYPES_DICT)
