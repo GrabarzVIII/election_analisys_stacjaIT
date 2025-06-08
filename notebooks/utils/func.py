@@ -34,3 +34,18 @@ def prepare_trusttee_presence_data2020(filepath: str) -> pd.DataFrame:
     )
     df['czy_maz'] = np.where(df['maz_zaufania_obezny'] > 0, 1, 0)
     return df
+
+def prepare_gus_population(filepath: str) -> pd.DataFrame:
+    df = pd.read_excel(filepath, sheet_name='tabl. 21', skiprows=2).iloc[:,[0,4,5,6]]
+    df.columns = ['TERYT','area','population','density']
+    df = df[df['TERYT'].notna()].reset_index(drop=True)
+    
+    df['TERYT'] = df['TERYT'].str[:6]
+
+    for c in ['area','population','density']:
+        df[c] = pd.to_numeric(df[c], errors='coerce').astype(float)
+
+    
+    df = df.drop_duplicates(subset=['TERYT']).reset_index(drop=True)
+    
+    return df
