@@ -1,0 +1,12 @@
+analisys_election/
+__pycache__/
+*.pyc
+.env
+
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+.ipynb_checkpoints/
+*.nbconvert.ipynb
