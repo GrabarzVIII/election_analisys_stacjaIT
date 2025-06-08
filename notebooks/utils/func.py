@@ -36,7 +36,7 @@ def prepare_trusttee_presence_data2020(filepath: str) -> pd.DataFrame:
     return df
 
 def prepare_gus_population(filepath: str) -> pd.DataFrame:
-    df = pd.read_excel(filepath, sheet_name='tabl. 21', skiprows=2).iloc[:,[0,4,5,6]]
+    df = pd.read_excel(filepath, sheet_name='tabl. 21', skiprows=2).iloc[:,[0,4,5,7]]
     df.columns = ['TERYT','area','population','density']
     df = df[df['TERYT'].notna()].reset_index(drop=True)
 
